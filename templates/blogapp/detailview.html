@@ -1,0 +1,21 @@
+<!-- @format -->
+
+<h3>Title:</h3>
+<p>{{data.blog_title}}</p>
+<br />
+<h3>Blog</h3>
+<p>{{data.blog}}</p>
+<hr />
+
+<a href="{% url 'blogs' %}">Go Back</a>
+
+<form method="post">
+  {%csrf_token %}
+  <h2>Comment Here</h2>
+  {{form.as_p}}
+  <input type="submit" value="Comment" />
+</form>
+
+{%for comment in comments%}
+<p><strong>{{comment.your_name}}:</strong> {{comment.comment_text}}</p>
+{%endfor %}
